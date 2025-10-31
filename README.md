@@ -14,3 +14,8 @@ $ make
 
 Il contient 2 fichiers `books.txt`et `users.txt` que vous pouvez utilisez pour tester votre code.
 Pour ca il suffit de les copiers dans le repertoire `build` avec l'application `bibliotheque`
+
+
+La fonctionnalite que j'ai choisi a expliquer qu'on n'a pas vu en classe est le splittage des string que on a eu besoin d'utiliser pour la methode fromfileformat dans book.cpp . 
+
+ressource utilisee : https://www.geeksforgeeks.org/cpp/how-to-split-string-by-delimiter-in-cpp/

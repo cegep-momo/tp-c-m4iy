@@ -1,5 +1,6 @@
 #include "book.h"
 #include <iostream>
+#include <bits/stdc++.h> 
 
 using std::string;
 
@@ -77,7 +78,7 @@ string Book::toString() const {
            "Auteur: " + author + "\n" +
            "ISBN: " + isbn + "\n" +
            "Disponible?: " + availabilityString + "\n" +
-           "Emprunteur: " + borrowerString;
+           "Emprunteur: -" + borrowerString;
 }
 
 string Book::toFileFormat() const{
@@ -85,6 +86,33 @@ string Book::toFileFormat() const{
 }
 
 void Book::fromFileFormat(const string& line){
-    
+ stringstream ss(line);
+ string part;
+
+ //titre 
+ if(getline(ss, part, '|')){
+    title = part;
+ }
+
+ //auteur
+ if (getline(ss, part, '|')) {
+        author = part;
+}
+
+//isbn
+if (getline(ss, part, '|')) {
+        isbn = part;
+}
+
+//dispo
+if (getline(ss, part, '|')) {
+        isAvailable = (part == "1"); // convertir 1 a true, 0 a false
+}
+
+//nom emprunteur 
+if (getline(ss, part, '|')) {
+        borrowerName = part;
+}
+
 }
 
