@@ -4,7 +4,6 @@
 #include "filemanager.h"
 
 using namespace std;
-
 // Constructor
 FileManager::FileManager(const string& booksFile, const string& usersFile)
     : booksFileName(booksFile), usersFileName(usersFile) {}
@@ -109,7 +108,7 @@ bool FileManager::fileExists(const string& filename) {
     return file.good();
 }
 
-// Create backup
+/* Create backup
 void FileManager::createBackup() {
     if (fileExists(booksFileName)) {
         filesystem::copy_file(booksFileName, booksFileName + ".backup");
@@ -121,3 +120,4 @@ void FileManager::createBackup() {
     
     cout << "Fichiers de sauvegarde créés.\n";
 }
+    */
