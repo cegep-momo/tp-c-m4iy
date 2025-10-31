@@ -68,3 +68,23 @@ void Book::returnBook(){
     isAvailable = true;
     borrowerName = "";
 }
+
+string Book::toString() const {
+    string availabilityString = isAvailable ? "Oui" : "Non";
+    string borrowerString = isAvailable ? "-" : borrowerName;
+
+    return "Titre: " + title + "\n" +
+           "Auteur: " + author + "\n" +
+           "ISBN: " + isbn + "\n" +
+           "Disponible?: " + availabilityString + "\n" +
+           "Emprunteur: " + borrowerString;
+}
+
+string Book::toFileFormat() const{
+    return title + "|" + author + "|" + isbn + "|" + (isAvailable ? "1" : "0") + "|" + borrowerName;
+}
+
+void Book::fromFileFormat(const string& line){
+    
+}
+
