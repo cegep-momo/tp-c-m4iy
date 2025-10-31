@@ -208,9 +208,10 @@ int main() {
             }
             
             case 13: { // Create Backup
-                fileManager.createBackup();
+               cout << "erreur de compi dans le code fourni? confusion)";
+                /* fileManager.createBackup();
                 pauseForInput();
-                break;
+                */break;
             }
             
             case 0: // Exit
