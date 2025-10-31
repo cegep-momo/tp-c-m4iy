@@ -57,3 +57,14 @@ void Book::setAvailability(bool available) {
 void Book::setBorrowerName(const string& name) {
     borrowerName = name;
 }
+
+//methodes 
+void Book::checkOut(const string&borrower){
+   isAvailable = false;
+   borrowerName = borrower;
+}
+
+void Book::returnBook(){
+    isAvailable = true;
+    borrowerName = "";
+}
