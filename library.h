@@ -41,6 +41,11 @@ public:
     void displayAllBooks();
     void displayAvailableBooks();
     void displayAllUsers();
+
+    //nouvelles methodes pour sort
+    vector<Book*> getAllBooksSortByTitle();
+    vector<Book*> getAllBooksSortByAuthor();
+    
     
     // Statistics
     int getTotalBooks() const;

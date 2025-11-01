@@ -2,6 +2,7 @@
 #include <algorithm>
 
 #include "library.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -70,6 +71,7 @@ vector<Book*> Library::searchBooksByAuthor(const string& author) {
     }
     return results;
 }
+
 
 // Get all available books
 vector<Book*> Library::getAvailableBooks() {
@@ -152,11 +154,33 @@ void Library::displayAllBooks() {
         cout << "Aucun livre dans la bibliothèque.\n";
         return;
     }
-    
-    cout << "\n=== TOUS LES LIVRES ===\n";
-    for (size_t i = 0; i < books.size(); ++i) {
+    //je rajoute le code pour choisir comment on sort
+     int sortChoice;
+    cout << "\nTrier les livres par : 1. Titre  2. Auteur\nChoix : ";
+    cin >> sortChoice;
+
+    //copie du vecteur pour sort la copie pas le vrai
+     vector<Book*> sortedBooks;
+    for (auto& book : books)
+        sortedBooks.push_back(book.get());
+
+    //le sort par titre
+    if (sortChoice == 1) {
+        sort(sortedBooks.begin(), sortedBooks.end(),
+            [](Book* a, Book* b){ return a->getTitle() < b->getTitle(); });
+    //et celui par auteur
+    } else if (sortChoice == 2) {
+        sort(sortedBooks.begin(), sortedBooks.end(),
+            [](Book* a, Book* b){ return a->getAuthor() < b->getAuthor(); });
+    } else {
+        cout << "Choix invalide le affichage sera sans sort.\n";
+    }
+
+
+     cout << "\n=== TOUS LES LIVRES ===\n";
+    for (size_t i = 0; i < sortedBooks.size(); ++i) {
         cout << "\nLivre " << (i + 1) << " :\n";
-        cout << books[i]->toString() << "\n";
+        cout << sortedBooks[i]->toString() << "\n";
         cout << "-------------------------\n";
     }
 }
@@ -169,11 +193,30 @@ void Library::displayAvailableBooks() {
         cout << "Aucun livre disponible pour emprunt.\n";
         return;
     }
-    
+    //meme chose pour l'autre methode de display
+
+    vector<Book*> sortedAvailable = available;
+
+    int sortChoice;
+    cout << "\nTrier les livres par : 1. Titre  2. Auteur\nChoix : ";
+    cin >> sortChoice;
+
+
+    if (sortChoice == 1) {
+        sort(sortedAvailable.begin(), sortedAvailable.end(),
+            [](Book* a, Book* b){ return a->getTitle() < b->getTitle(); });
+    } else if (sortChoice == 2) {
+        sort(sortedAvailable.begin(), sortedAvailable.end(),
+            [](Book* a, Book* b){ return a->getAuthor() < b->getAuthor(); });
+    } else {
+        cout << "Choix invalide le affichage sera sans sort.\n";
+    }
+
+
     cout << "\n=== LIVRES DISPONIBLES ===\n";
-    for (size_t i = 0; i < available.size(); ++i) {
+    for (size_t i = 0; i < sortedAvailable.size(); ++i) {
         cout << "\nLivre " << (i + 1) << " :\n";
-        cout << available[i]->toString() << "\n";
+        cout << sortedAvailable[i]->toString() << "\n";
         cout << "---------------------------\n";
     }
 }
